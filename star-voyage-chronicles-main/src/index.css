@@ -1,0 +1,258 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Space Exploration Design System - Cosmic Colors & Gradients */
+
+@layer base {
+  :root {
+    /* Core Space Colors */
+    --background: 220 100% 4%;
+    --foreground: 210 20% 98%;
+
+    /* Space Card Colors */
+    --card: 220 50% 8%;
+    --card-foreground: 210 20% 95%;
+
+    /* Cosmic Interface */
+    --popover: 220 50% 6%;
+    --popover-foreground: 210 20% 98%;
+
+    /* Nebula Primary */
+    --primary: 260 100% 70%;
+    --primary-foreground: 220 100% 4%;
+
+    /* Stellar Secondary */
+    --secondary: 220 30% 15%;
+    --secondary-foreground: 210 20% 95%;
+
+    /* Cosmic Muted */
+    --muted: 220 25% 12%;
+    --muted-foreground: 210 15% 65%;
+
+    /* Galaxy Accent */
+    --accent: 280 100% 65%;
+    --accent-foreground: 220 100% 4%;
+
+    /* Solar Flare */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Space Borders */
+    --border: 220 30% 18%;
+    --input: 220 30% 15%;
+    --ring: 260 100% 70%;
+
+    /* Design Elements */
+    --radius: 1rem;
+
+    /* Cosmic Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(260 100% 70%), hsl(280 100% 65%), hsl(240 100% 75%));
+    --gradient-planet: linear-gradient(135deg, hsl(260 100% 70% / 0.2), hsl(280 100% 65% / 0.2));
+    --gradient-card: linear-gradient(135deg, hsl(220 50% 8% / 0.8), hsl(220 30% 15% / 0.8));
+    
+    /* Star Field Colors */
+    --star-primary: hsl(210 20% 98%);
+    --star-secondary: hsl(260 100% 70%);
+    --star-tertiary: hsl(280 100% 65%);
+    
+    /* Planet Glow Effects */
+    --glow-blue: 0 0 40px hsl(260 100% 70% / 0.4);
+    --glow-purple: 0 0 40px hsl(280 100% 65% / 0.4);
+    --glow-cosmic: 0 0 60px hsl(240 100% 75% / 0.3);
+
+    /* Animation Timings */
+    --transition-cosmic: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: all 0.3s ease-out;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground overflow-x-hidden;
+  }
+  
+  /* Hide scrollbars */
+  .scrollbar-hide {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@layer components {
+  /* Starfield Animation */
+  .stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .star {
+    position: absolute;
+    background: var(--star-primary);
+    border-radius: 50%;
+    animation: twinkle 3s infinite ease-in-out;
+  }
+
+  .star:nth-child(2n) {
+    background: var(--star-secondary);
+    animation-delay: 1s;
+    animation-duration: 4s;
+  }
+
+  .star:nth-child(3n) {
+    background: var(--star-tertiary);
+    animation-delay: 2s;
+    animation-duration: 2s;
+  }
+
+  /* Hero Gradient Text */
+  .gradient-text {
+    background: var(--gradient-hero);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-shift 3s ease-in-out infinite alternate;
+  }
+
+  /* Planet Glow Effects */
+  .planet-glow-blue {
+    box-shadow: var(--glow-blue);
+    transition: var(--transition-cosmic);
+  }
+
+  .planet-glow-purple {
+    box-shadow: var(--glow-purple);
+    transition: var(--transition-cosmic);
+  }
+
+  .planet-glow-cosmic {
+    box-shadow: var(--glow-cosmic);
+    transition: var(--transition-cosmic);
+  }
+
+  /* Cosmic Card */
+  .cosmic-card {
+    background: var(--gradient-card);
+    backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--border));
+    transition: var(--transition-cosmic);
+  }
+
+  /* Search Bar */
+  .cosmic-search {
+    background: hsl(var(--card) / 0.5);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--border));
+    transition: var(--transition-smooth);
+  }
+
+  .cosmic-search:focus {
+    border-color: hsl(var(--primary));
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px hsl(var(--primary) / 0.6);
+  }
+}
